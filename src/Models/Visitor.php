@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 /**
  * @method static Visitor range(\DateTime $startDateTime, ?\DateTime $endDateTime = null)
@@ -20,6 +21,8 @@ use Illuminate\Support\Carbon;
  */
 class Visitor extends Model
 {
+    use HasUuids;
+    
     protected $table = 'visitors';
 
     protected $fillable = [
