@@ -68,7 +68,7 @@ class Visitor extends Model
      * @param int $visitableId
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeVisitableId(Builder $query, int $visitableId)
+    public function scopeVisitableId(Builder $query, string $visitableId)
     {
         return $query->where('visitable_id', $visitableId);
     }
