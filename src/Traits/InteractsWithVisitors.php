@@ -62,6 +62,11 @@ trait InteractsWithVisitors
         ]);
     }
 
+    public function theVisitors()
+    {
+        return $this->morphMany(Visitor::class, 'visitable', 'visitable', 'visitable_id');
+    }
+
     /**
      * Handle dynamic method calls into the model.
      *
