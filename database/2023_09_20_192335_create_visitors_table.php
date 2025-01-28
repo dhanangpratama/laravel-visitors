@@ -14,15 +14,19 @@ return new class extends Migration {
     {
         Schema::dropIfExists('visitors');
         Schema::create('visitors', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string("visitable")->nullable();
             $table->string("visitable_id")->nullable();
-            $table->string('auth_id')->nullable();
+            $table->string('auth_id')->nullable()->index();
             $table->string('ip')->nullable()->index();
             $table->string('referer')->nullable();
             $table->string('user_agent')->nullable();
             $table->string('path')->nullable();
             $table->timestamps();
+
+            $table->index('created_at');
+            $table->index(['visitable', 'visitable_id']);
+            $table->fullText(['auth_id', 'ip', 'referer', 'user_agent', 'path']);
         });
     }
 
